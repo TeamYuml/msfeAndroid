@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="com.example.konrad.start_app.Ustawienia"
+    >
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+        <TextView
+            android:id="@+id/textView"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:text="Lekarz pierwszego Kontaktu"
+            android:textSize="20dp"
+            tools:layout_editor_absoluteX="8dp"
+            tools:layout_editor_absoluteY="60dp" />
+
+        <TextView
+            android:id="@+id/textView7"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:text="Ustawienia"
+            android:textSize="20dp"
+            tools:layout_editor_absoluteX="8dp"
+            tools:layout_editor_absoluteY="16dp" />
+
+        <EditText
+            android:id="@+id/numberFC"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:ems="10"
+            android:inputType="phone"
+            android:text=""
+            tools:layout_editor_absoluteX="0dp"
+            tools:layout_editor_absoluteY="98dp" />
+
+        <Button
+            android:id="@+id/saveFC"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:onClick="saveFIRSTdoctor"
+            android:text="Zapisz"
+            tools:layout_editor_absoluteX="288dp"
+            tools:layout_editor_absoluteY="98dp" />
+
+        <Button
+            android:id="@+id/powrot"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:onClick="powrot"
+            android:text="Powrot" />
+    </LinearLayout>
+
+</android.support.constraint.ConstraintLayout>

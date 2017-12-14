@@ -1,0 +1,42 @@
+<resources>
+    <!--do rejestracji-->
+    <string name="app_name">Start_APP</string>
+    <string name="tap">Tap to next</string>
+    <string name="registration">Formularz rejestracyjny</string>
+    <string name="login">Haslo</string>
+    <string name="email">Email</string>
+    <string name="password">Potwierdz Haslo</string>
+    <string name="name">Imie</string>
+    <string name="forname">Nazwisko</string>
+    <string name="pesel">Pesel</string>
+    <string name="adres">Adres</string>
+    <string name="zakoncz">ZAKONCZ</string>
+
+    <!--do logowania-->
+    <string name="loginsystem">Autoryzacja</string>
+    <string name="LoginLOG">Login</string>
+    <string name="PasswdLOG">Haslo</string>
+    <string name="pamietaj">zapamiętaj</string>
+    <string name="BTNLOG">ZALOGUJ</string>
+    <string name="welcome">Welcome</string>
+
+    <!--Po zalogowaniu-->
+    <string name="regulamin_korzystania">Opis korzystania z aplikacji: Aplikacja zostala stworzona przez 3 bardzo błyskotiwych
+    studentów 3 roku w wyższej szkoły informatyki i umiejętności w Łodzi. Pozwala ona rozplanować sobie harmonogram pobieranych
+    leków z możliwością kontaktu z lekarzem pierwszego stopnia oraz połączeniem z numerem alarmowym. W przypadku obydwóch opcji
+    przesyłamy harmonogram leków automatycznie do wybranych placówek co ułatwia współprace zarówno między pacjentem jak i lekarzem
+    oraz ludźmi odpowiedzialnymi za nasze bezpieczeństwo. Aplikacja powstała spontanicznie z dedykacją dla pewnej osoby ktora mnie
+    naprowadziła na ten pomysł.</string>
+    <string name="Ustawienia">Ustawienia</string>
+    <string name="Ostrzezenie">"Zgodnie z art. 66 § 1 k.w. (kodeksu wykroczeń), osoba, która ze złośliwości lub swawoli, chcąc wywołać niepotrzebną czynność fałszywym alarmem, informacją lub innym sposobem, wprowadza w błąd instytucję użyteczności publicznej albo inny organ ochrony bezpieczeństwa, porządku publicznego lub zdrowia, podlega karze aresztu, ograniczenia wolności albo grzywny do 1.500 złotych. Ponadto jeżeli wykroczenie spowodowało niepotrzebną czynność, można orzec nawiązkę do wysokości 1.000 złotych.
+
+Wykroczenie to można popełnić tylko umyślnie, wymagane jest bowiem tutaj stwierdzenie złośliwości lub swawoli przy wprowadzaniu w błąd oraz chęć wywołania niepotrzebnej czynności. Wprowadzenie w błąd jest akcją celową, a więc odpowiedzialność jest ograniczona do działań cum dolo directo. Dodatkowymi znamionami strony podmiotowej są złośliwość lub swawola. Jeżeli zatem osoba, która wezwała policje do interwencji zrobiła to w sposób złośliwy to policja winna sama z urzędu skierować wniosek o ukaranie za wykroczenie z art. 66 k.w. Może także Pan lub Pana teść złożyć takie zawiadomienie występując w charakterze pokrzywdzonego. Pokrzywdzonym jest ten, czyje dobro prawne zostało bezpośrednio naruszone lub zagrożone przez wykroczenie (art. 25. § 1 kodeksu postępowania w sprawach o wykroczenia)."</string>
+
+
+    <!-- Dla Pielegniarek-->
+
+    <string name="IDpacjent">Wpisz ID pacjenta</string>
+    <string name="do_kalendarza">Przejdź do kalendarza harmonogramu</string>
+    <string name="title_activity_do__sos">Do_SOS</string>
+    <string name="title_activity_user_harmonogram">UserHarmonogramActivity</string>
+</resources>

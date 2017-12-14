@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="com.example.konrad.start_app.For_Login">
+
+   <TextView
+       android:layout_width="368dp"
+       android:layout_height="wrap_content"
+       android:text="@string/regulamin_korzystania"
+       android:fontFamily="sans-serif"
+       tools:layout_editor_absoluteY="0dp"
+       tools:layout_editor_absoluteX="8dp"
+       android:background="@color/start_app"/>
+
+        <Button
+            android:id="@+id/ustawienia"
+            android:layout_width="368dp"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            tools:layout_editor_absoluteY="246dp"
+            tools:layout_editor_absoluteX="8dp"
+            android:text="@string/Ustawienia"
+            />
+    <Button
+        android:id="@+id/do_kalendarza"
+        android:layout_width="368dp"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        tools:layout_editor_absoluteY="198dp"
+        tools:layout_editor_absoluteX="8dp"
+        android:text="@string/do_kalendarza"/>
+
+</android.support.constraint.ConstraintLayout>
