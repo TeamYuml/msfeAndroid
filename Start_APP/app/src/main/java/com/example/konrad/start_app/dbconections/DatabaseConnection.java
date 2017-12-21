@@ -6,6 +6,7 @@ import android.content.SharedPreferences;
 import android.os.AsyncTask;
 
 import java.io.UnsupportedEncodingException;
+import java.net.HttpURLConnection;
 import java.net.URLEncoder;
 import android.app.ProgressDialog;
 import android.widget.Toast;
@@ -21,36 +22,23 @@ import com.example.konrad.start_app.Callendar;
 
 public class DatabaseConnection extends AsyncTask<String, Void, String>{
 
-    Context ctx;
 
-    private ProgressDialog mDialog;
-
-    /**
-     * Konstruktor ustawiajacy context
-     * @param ctx Contenxt z ktorego zostal wywolany
-     */
-    public DatabaseConnection(Context ctx) {this.ctx = ctx;}
-
-    /**
-     * Metoda wykonujaca sie przed rozpoczeciem
-     * wykonywania sie zadania
-     */
-    protected void onPreExecute() {
-        super.onPreExecute();
-
-        mDialog = new ProgressDialog(ctx);
-        mDialog.setMessage("Prosze czekac...");
-        mDialog.show();
-    }
+    public DatabaseConnection() {}
 
     @Override
     protected String doInBackground(String... strings) {
-        String url = "http://192.168.0.101/index.php/android/register";
+        String url = "http://192.168.0.103/index.php/android/register";
 
         Utility utility = new Utility();
 
-        // Pobranie wyniku z webservica z pod wskazenego adresu url
-        return utility.getResultFromWebService(encodeForRegister(strings), url);
+        HttpURLConnection huc = utility.getConnection(url);
+
+        if (huc != null) {
+            // Pobranie wyniku z webservica z pod wskazenego adresu url
+            return utility.getResultFromWebService(encodeForRegister(strings), huc);
+        } else {
+            return "Serwis czasowo niedostepny";
+        }
     }
 
     /**
@@ -79,49 +67,5 @@ public class DatabaseConnection extends AsyncTask<String, Void, String>{
             e.printStackTrace();
         }
         return postData;
-    }
-
-    /**
-     * Metoda wykonujaca sie po skonczeniu zadania
-     * Jezeli wszystko jest okay przechodzi do nowego activity
-     * jezeli nie to zostaje w activity z ktorego zostalo wlaczone zadanie i wyswietla blad
-     * @param result String z resultem zapytania
-     */
-    @Override
-    protected void onPostExecute(String result) {
-        super.onPostExecute(result);
-
-        // zamkniecie okienka dialogowego
-        mDialog.dismiss();
-
-        // Sprawdzenie czy wszystko sie udalo i dostalem id zarejestrowanego usera
-        if (result.matches("\\d")) {
-            // Otwieram plik z referencjami
-            SharedPreferences sp = ctx.getSharedPreferences("com.example.konrad.start_app.preference_file",
-                    Context.MODE_PRIVATE);
-
-            // Tworze zmienna do edytowanie pliku z referencjami
-            SharedPreferences.Editor editor = sp.edit();
-
-            // preferencja do sprawdzania czy usera jest juz zarejestrowany
-            editor.putInt("isLogged", 1);
-
-            // preferencja do trzymania userID
-            editor.putInt("userID", Integer.parseInt(result));
-
-            // zatwierdzenie zmian
-            editor.commit();
-
-            /* Tworzenie obiektu intent do przejsia pomiedzy aktywnościami
-            Parametry konstruktora:
-            1. Klasa z ktorej zchodzimy
-            2. Klasa do ktorej wchodzimy */
-            Intent intent = new Intent(ctx, Callendar.class);
-
-            // Start nowej aktywnosci
-            ctx.startActivity(intent);
-        } else {
-            Toast.makeText(this.ctx, result, Toast.LENGTH_SHORT).show();
-        }
     }
 }

@@ -9,6 +9,7 @@ import android.widget.Toast;
 import com.example.konrad.start_app.Harmonogram;
 
 import java.io.UnsupportedEncodingException;
+import java.net.HttpURLConnection;
 import java.net.URLEncoder;
 
 /**
@@ -40,12 +41,18 @@ public class SelectHarmonogram extends AsyncTask<String, Void, String> {
 
     @Override
     protected String doInBackground(String... strings) {
-        String url = "http://192.168.2.42/index.php/android/getHarmonogram";
+        String url = "http://192.168.0.103/index.php/android/getHarmonogram";
 
         Utility utility = new Utility();
 
-        // Pobieranie harmonogramu z web service
-        return utility.getResultFromWebService(encodeForHarmonogramSelect(strings), url);
+        HttpURLConnection huc = utility.getConnection(url);
+
+        if (huc != null) {
+            // Pobieranie harmonogramu z web service
+            return utility.getResultFromWebService(encodeForHarmonogramSelect(strings), huc);
+        } else {
+            return "Serwis czasowo niedostepny";
+        }
     }
 
     /**
@@ -72,7 +79,9 @@ public class SelectHarmonogram extends AsyncTask<String, Void, String> {
     protected void onPostExecute(String result) {
         super.onPostExecute(result);
 
-        if (result.compareTo("Brak harmonogramu") != 0) {
+        if(result.compareTo("Serwis czasowo niedostepny") == 0) {
+            Toast.makeText(ctx, result, Toast.LENGTH_SHORT).show();
+        } else if (result.compareTo("Brak harmonogramu") != 0) {
             // pomocnicza tabela do rozdzielenia na wiersze
             String temp[] = result.split(",");
 

@@ -22,14 +22,11 @@ public class Utility {
     /**
      * Metoda realizujeca polaczenie z web servicem
      * @param encodedParameters zakodowane paremtry do requesta POST
-     * @param url url do web servica
+     * @param huc obiekt z polaczonym web servicem
      * @return String z wynikiem dzialania web servica
      */
-    public String getResultFromWebService(String encodedParameters, String url) {
+    public String getResultFromWebService(String encodedParameters, HttpURLConnection huc) {
         try {
-            // Otworzenie polaczenia
-            HttpURLConnection huc = getConnection(url);
-
             OutputStream os = huc.getOutputStream();
             BufferedWriter bw = new BufferedWriter(new OutputStreamWriter(os, "UTF-8"));
 
@@ -53,36 +50,38 @@ public class Utility {
             while ((line = br.readLine()) != null) {
                 result += line;
             }
+
             br.close();
             is.close();
             huc.disconnect();
 
             return result;
         } catch (IOException e) {
-            e.printStackTrace();
+            return "Serwis czasowo niedostepny";
         }
-        return "Something went wrong";
     }
 
     /**
      * Metoda do otwarcia polaczenia
      * @param url String z url do ktorego otwieram polaczenie
-     * @return Obiekt HttpURLConnection
+     * @return Obiekt HttpURLConnection lub null gdy brak polaczenia
      */
-    private HttpURLConnection getConnection(String url) {
-        HttpURLConnection huc = null;
+    public HttpURLConnection getConnection(String url) {
+        HttpURLConnection huc;
         try {
             URL ur = new URL(url);
             huc = (HttpURLConnection)ur.openConnection();
-            huc.setRequestMethod("POST");
-            huc.setDoOutput(true);
-            huc.setDoInput(true);
+            if (huc.getResponseCode() == 200) {
+                huc = (HttpURLConnection)ur.openConnection();
+                huc.setRequestMethod("POST");
+                huc.setDoOutput(true);
+                huc.setDoInput(true);
+            }
         } catch (ProtocolException | MalformedURLException e) {
-            e.printStackTrace();
+            return null;
         } catch (IOException e) {
-            e.printStackTrace();
+            return null;
         }
-
         return huc;
     }
 }
