@@ -1,8 +1,5 @@
 package com.example.konrad.start_app;
 
-import android.content.Context;
-import android.content.SharedPreferences;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.EditText;
@@ -12,32 +9,28 @@ import android.widget.Toast;
 
 import com.example.konrad.start_app.dbconections.DatabaseConnection;
 
+import java.util.concurrent.ExecutionException;
+
 /**
  * Aktywnosc dla widoku rejestracji
  */
-public class Main2Activity extends AppCompatActivity {
+public class Main2Activity extends SameMethodsForLoginAndRegister {
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+
         // Sprawdzenie czy user jest juz zalogowany/zarejestrowny
         // jezeli tak to przechodze do kolejnego activity jezeli nie to
         // tworze widok rejestracji
-        if (!checkIfUserIsLogged()) {
-            super.onCreate(savedInstanceState);
+        if (!super.checkIfUserIsLogged()) {
             setContentView(R.layout.activity_main2);
 
             ImageView imageReg = (ImageView) findViewById(R.id.imageview1);
 
             imageReg.setImageResource(R.drawable.primary_logo_on_transparent_282x69);
         } else {
-            super.onCreate(savedInstanceState);
-
-            // Tworze przejscie do kolejnego activity
-            Intent intent = new Intent(this, Callendar.class);
-
-            // przechodze do kolejnego activity
-            startActivity(intent);
-
             // polecenie ktore konczy activity
             // nie bedzie mozna kliknac back
             finish();
@@ -48,8 +41,7 @@ public class Main2Activity extends AppCompatActivity {
      * Metoda do obsługi przycisku rejestracji
      * @param view
      */
-    public void register(View view)
-    {
+    public void register(View view) throws ExecutionException, InterruptedException {
         // Inicjalizacja odpowiednich EditTextow
         EditText em = (EditText)findViewById(R.id.edit1);
         EditText has = (EditText)findViewById(R.id.edit2);
@@ -88,36 +80,30 @@ public class Main2Activity extends AppCompatActivity {
             // Sprawdzenie czy hasla sie zgadzaja
             if (haslo.compareTo(hasloConfirm) == 0) {
                 // Walidacja emaila i numeru PESEL
-                if (emailValid(email) && peselValid(pesel)) {
+                if (super.checkValidemail(email) && peselValid(pesel) && super.validPassword(haslo)) {
                     // Inicjalizacja nowego watku zwiazanego z polaczeniem do bazy danych MySQL
-                    DatabaseConnection dc = new DatabaseConnection(this);
+                    DatabaseConnection dc = new DatabaseConnection();
                     // Start nowego watku
-                    dc.execute(params);
+                    String result = dc.execute(params)
+                            .get();
 
-                    finish();
+                    // Sprawdzenie czy wszystko sie udalo i dostalem id zarejestrowanego usera
+                    if (result.matches("\\d+")) {
+                        super.addUserToLogged(result);
+                        Intent intent = new Intent(this, Login.class);
+                        intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+                        startActivity(intent);
+                        finish();
+                    } else {
+                        Toast.makeText(this, result, Toast.LENGTH_SHORT).show();
+                    }
+
                 }
             } else {
                 Toast.makeText(this, "Hasla sie nie zgadzaja", Toast.LENGTH_SHORT).show();
             }
         } else {
             Toast.makeText(this, "Wypelnij wszystkie pola", Toast.LENGTH_SHORT).show();
-        }
-    }
-
-    /**
-     * Metoda do walidacji adresu email
-     * @param email Email do walidacji
-     * @return True jezeli email sie zgadza False jezeli nie
-     */
-    protected boolean emailValid(String email) {
-        String emailPattern = "[a-zA-Z0-9._-]+@[a-z]+\\.+[a-z]+";
-
-        if (email.matches(emailPattern)) {
-            return true;
-        }
-        else {
-            Toast.makeText(getApplicationContext(),"Zly email", Toast.LENGTH_SHORT).show();
-            return false;
         }
     }
 
@@ -135,24 +121,5 @@ public class Main2Activity extends AppCompatActivity {
             Toast.makeText(getApplicationContext(), "Zly pesel", Toast.LENGTH_SHORT).show();
             return false;
         }
-    }
-
-    /**
-     * Sprawdza czy uzytkownik byl wczesniej zarejestrowany/zalogowany
-     * @return boolean
-     */
-    private boolean checkIfUserIsLogged() {
-
-        // Utworzenie obiektu z preferencjami
-        SharedPreferences sp = getSharedPreferences("com.example.konrad.start_app.preference_file",
-                Context.MODE_PRIVATE);
-
-        // pobranie z pliku z preferencjami zmiennej o odpowiednim kluczu i podanie
-        // wartosci domyslnej jezeli zmienna nie istnieje w pliku
-        int isLogged = sp.getInt("isLogged", 0);
-
-        // Sprawdzenie czy zmienna isLogged jest rowna 1 jezeli tak zwracam true
-        // jezeli nie zwracam false
-        return isLogged == 1 ? true : false;
     }
 }
