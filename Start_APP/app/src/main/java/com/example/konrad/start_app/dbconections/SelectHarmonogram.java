@@ -6,7 +6,7 @@ import android.os.AsyncTask;
 import android.os.Bundle;
 import android.widget.Toast;
 
-import com.example.konrad.start_app.Harmonogram;
+import com.example.konrad.start_app.timetables.Harmonogram;
 
 import java.io.UnsupportedEncodingException;
 import java.net.HttpURLConnection;
@@ -41,7 +41,7 @@ public class SelectHarmonogram extends AsyncTask<String, Void, String> {
 
     @Override
     protected String doInBackground(String... strings) {
-        String url = "http://192.168.0.103/index.php/android/getHarmonogram";
+        String url = "http://192.168.0.107/index.php/android/getHarmonogram";
 
         Utility utility = new Utility();
 

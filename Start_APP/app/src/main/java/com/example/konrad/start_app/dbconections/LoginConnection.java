@@ -22,7 +22,7 @@ public class LoginConnection extends AsyncTask<String, Void, String> {
 
     @Override
     protected String doInBackground(String... strings) {
-        String url = "http://192.168.0.103/index.php/android/login";
+        String url = "http://192.168.0.107/index.php/android/login";
 
         Utility utility = new Utility();
 

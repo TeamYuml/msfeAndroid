@@ -6,7 +6,7 @@
     android:layout_height="match_parent"
     android:background="@color/start_app"
     android:orientation="vertical"
-    tools:context="com.example.konrad.start_app.Harmonogram"
+    tools:context="com.example.konrad.start_app.timetables.Harmonogram"
     tools:layout_editor_absoluteX="0dp"
     tools:layout_editor_absoluteY="0dp">
 

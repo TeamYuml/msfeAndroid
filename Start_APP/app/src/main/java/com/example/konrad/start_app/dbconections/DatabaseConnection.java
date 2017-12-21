@@ -1,17 +1,10 @@
 package com.example.konrad.start_app.dbconections;
 
-import android.content.Context;
-import android.content.Intent;
-import android.content.SharedPreferences;
 import android.os.AsyncTask;
-
 import java.io.UnsupportedEncodingException;
 import java.net.HttpURLConnection;
 import java.net.URLEncoder;
-import android.app.ProgressDialog;
-import android.widget.Toast;
 
-import com.example.konrad.start_app.Callendar;
 
 
 /**
@@ -27,7 +20,7 @@ public class DatabaseConnection extends AsyncTask<String, Void, String>{
 
     @Override
     protected String doInBackground(String... strings) {
-        String url = "http://192.168.0.103/index.php/android/register";
+        String url = "http://192.168.0.107/index.php/android/register";
 
         Utility utility = new Utility();
 
