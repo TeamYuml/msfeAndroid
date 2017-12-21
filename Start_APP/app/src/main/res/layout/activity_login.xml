@@ -64,15 +64,15 @@
                 android:id="@+id/texview2"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="@string/LoginLOG"
+                android:text="@string/email"
                 android:textSize="20sp" />
 
             <EditText
-                android:id="@+id/edit1"
+                android:id="@+id/emailvalid"
                 android:layout_width="100dp"
-                android:layout_height="match_parent"
+                android:layout_height="wrap_content"
 
-                android:inputType="" />
+                android:inputType="textEmailAddress" />
         </LinearLayout>
 
         <LinearLayout
@@ -91,9 +91,9 @@
                 android:textSize="20sp" />
 
             <EditText
-                android:id="@+id/edit2"
+                android:id="@+id/passwordvalid"
                 android:layout_width="100dp"
-                android:layout_height="match_parent"
+                android:layout_height="wrap_content"
                 android:inputType="textPassword"
 
                 />
@@ -136,7 +136,23 @@
             android:text="@string/BTNLOG"
             android:onClick="procesLog"/>
 
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:gravity="center"
+            android:orientation="vertical"
+            tools:layout_editor_absoluteX="8dp"
+            tools:layout_editor_absoluteY="513dp">
+
+            <Button
+                android:id="@+id/toRegister"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:onClick="goToRegister"
+                android:text="Brak konta? Zarejestruj sie" />
         </LinearLayout>
+
+    </LinearLayout>
 
 
 

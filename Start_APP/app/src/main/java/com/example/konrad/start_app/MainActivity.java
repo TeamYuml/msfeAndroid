@@ -34,7 +34,7 @@ public class MainActivity extends AppCompatActivity {
         xx.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(MainActivity.this, MainScreenActivity.class);
+                Intent intent = new Intent(MainActivity.this, Login.class);
                 //Przejscie do klasy rejestracji
 
                 // Start nowej aktywnosci
