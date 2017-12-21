@@ -11,6 +11,8 @@ import android.widget.ImageView;
 import android.view.View;
 import android.widget.LinearLayout;
 
+import com.example.konrad.start_app.loginandregister.Login;
+
 /**
  * Pierwsze okno po uruchomieniu aplikacji
  */

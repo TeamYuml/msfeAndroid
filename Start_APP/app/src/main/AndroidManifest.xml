@@ -24,33 +24,33 @@
             </intent-filter>
         </activity>
         <activity
-            android:name=".Login"
+            android:name=".loginandregister.Login"
             android:parentActivityName=".MainActivity" />
         <activity
-            android:name=".Main2Activity"
-            android:parentActivityName=".Login" />
+            android:name=".loginandregister.Main2Activity"
+            android:parentActivityName=".loginandregister.Login" />
         <activity
             android:name=".MainScreenActivity"
-            android:parentActivityName=".Login"/>
+            android:parentActivityName=".loginandregister.Login"/>
         <activity
-            android:name=".Callendar"
+            android:name=".timetables.Callendar"
             android:parentActivityName=".MainScreenActivity" />
         <activity
-            android:name=".HarmonogramModel"
-            android:parentActivityName=".Callendar" />
+            android:name=".timetables.HarmonogramModel"
+            android:parentActivityName=".timetables.Callendar" />
         <activity
-            android:name=".Harmonogram"
-            android:parentActivityName=".HarmonogramModel" />
+            android:name=".timetables.Harmonogram"
+            android:parentActivityName=".timetables.HarmonogramModel" />
         <activity
-            android:name=".UserHarmonogramActivity"
+            android:name=".timetables.UserHarmonogramActivity"
             android:label="@string/title_activity_user_harmonogram"
-            android:parentActivityName=".Callendar"/>
+            android:parentActivityName=".timetables.Callendar"/>
 
-        <activity android:name=".AddEventActivity"
-            android:parentActivityName=".UserHarmonogramActivity"/>
+        <activity android:name=".timetables.AddEventActivity"
+            android:parentActivityName=".timetables.UserHarmonogramActivity"/>
 
-        <activity android:name=".Do_SOS"
-            android:parentActivityName=".UserHarmonogramActivity"/>
+        <activity android:name=".timetables.Do_SOS"
+            android:parentActivityName=".timetables.UserHarmonogramActivity"/>
 
         <activity android:name=".Ustawienia"
             android:parentActivityName=".MainScreenActivity"/>
