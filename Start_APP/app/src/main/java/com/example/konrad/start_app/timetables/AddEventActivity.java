@@ -1,4 +1,4 @@
-package com.example.konrad.start_app;
+package com.example.konrad.start_app.timetables;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -9,6 +9,10 @@ import android.widget.ArrayAdapter;
 import android.widget.EditText;
 import android.widget.Spinner;
 import android.widget.Toast;
+
+import com.example.konrad.start_app.R;
+import com.example.konrad.start_app.room.RoomDB;
+import com.example.konrad.start_app.room.UserHarmonogramEntity;
 
 import java.sql.Date;
 import java.util.Calendar;

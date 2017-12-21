@@ -9,6 +9,8 @@ import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.Toast;
 
+import com.example.konrad.start_app.timetables.Callendar;
+
 /**
  * Activity dla wyboru typu harmonogramu
  * lekarza lub uzytkownika

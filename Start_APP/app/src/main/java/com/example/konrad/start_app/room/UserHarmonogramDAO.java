@@ -1,4 +1,4 @@
-package com.example.konrad.start_app;
+package com.example.konrad.start_app.room;
 
 import android.arch.persistence.room.Dao;
 import android.arch.persistence.room.Delete;

@@ -1,4 +1,4 @@
-package com.example.konrad.start_app;
+package com.example.konrad.start_app.timetables;
 
 import android.content.Context;
 import android.content.SharedPreferences;
@@ -7,6 +7,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.widget.Toast;
 
 import com.example.konrad.start_app.dbconections.SelectHarmonogram;
+import com.example.konrad.start_app.timetables.DateProperty;
 
 /**
  * Klasa sluzaca do stworzenia harmonogramu

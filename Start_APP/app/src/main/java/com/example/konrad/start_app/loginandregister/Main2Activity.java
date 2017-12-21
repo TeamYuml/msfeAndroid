@@ -1,4 +1,4 @@
-package com.example.konrad.start_app;
+package com.example.konrad.start_app.loginandregister;
 
 import android.os.Bundle;
 import android.view.View;
@@ -7,6 +7,7 @@ import android.widget.ImageView;
 import android.content.Intent;
 import android.widget.Toast;
 
+import com.example.konrad.start_app.R;
 import com.example.konrad.start_app.dbconections.DatabaseConnection;
 
 import java.util.concurrent.ExecutionException;

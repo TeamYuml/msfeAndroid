@@ -1,4 +1,4 @@
-package com.example.konrad.start_app;
+package com.example.konrad.start_app.loginandregister;
 
 import android.content.Context;
 import android.content.SharedPreferences;

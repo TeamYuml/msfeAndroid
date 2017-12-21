@@ -1,11 +1,12 @@
-package com.example.konrad.start_app;
+package com.example.konrad.start_app.timetables;
 
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
-import org.w3c.dom.Text;
+import com.example.konrad.start_app.R;
+import com.example.konrad.start_app.timetables.DateProperty;
 
 /**
  * Klasa z harmonogramem

@@ -1,4 +1,4 @@
-package com.example.konrad.start_app;
+package com.example.konrad.start_app.timetables;
 
 /**
  * Created by Kaniak on 08.12.2017.
@@ -14,7 +14,7 @@ class DateProperty {
      */
     public String date;
 
-    static DateProperty getInstance() {
+    public static DateProperty getInstance() {
         return ourInstance;
     }
 

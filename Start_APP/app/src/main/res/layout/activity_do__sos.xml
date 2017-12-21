@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="com.example.konrad.start_app.Do_SOS"
+    tools:context="com.example.konrad.start_app.timetables.Do_SOS"
     android:background="@color/start_app2">
 
     <TextView
