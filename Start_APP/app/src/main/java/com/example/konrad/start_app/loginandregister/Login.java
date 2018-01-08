@@ -12,7 +12,7 @@ import android.widget.Toast;
 
 import com.example.konrad.start_app.MainScreenActivity;
 import com.example.konrad.start_app.R;
-import com.example.konrad.start_app.dbconections.LoginConnection;
+import com.example.konrad.start_app.dbconections.DatabaseConnection;
 
 import java.util.concurrent.ExecutionException;
 
@@ -23,8 +23,6 @@ public class Login extends SameMethodsForLoginAndRegister {
 
     EditText emailedit;
     EditText passwordedit;
-
-    //CheckBox check;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -51,6 +49,7 @@ public class Login extends SameMethodsForLoginAndRegister {
      * @throws InterruptedException
      */
     public void procesLog(View view) throws ExecutionException, InterruptedException {
+
         ConnectivityManager connectivityManager = (ConnectivityManager) getSystemService(Context.CONNECTIVITY_SERVICE);
         NetworkInfo networkInfo = connectivityManager.getNetworkInfo(ConnectivityManager.TYPE_WIFI);
 
@@ -63,31 +62,14 @@ public class Login extends SameMethodsForLoginAndRegister {
             String email = emailedit.getText().toString().trim();
             String password = passwordedit.getText().toString().trim();
 
+            System.out.println(email);
+
             if (super.checkValidemail(email) && super.validPassword(password)) {
-                // Czy potrzebny jest ten checkbox jak i tak user mial byc automatycznie logowany??
-                // a i tak kazdy ma tylko jedno konto
-                // bo kazdy ma tylko jeden pesel??
-                //check = (CheckBox) findViewById(R.id.check1);
-                //if (check.isChecked()) {
-                //    emailedit.setText(email);
-                //    passwordedit.setText(password);
 
-                //}
-                String params[] = {email, password};
+                String params[] = {"login", email, password};
 
-                LoginConnection db = new LoginConnection();
-                String result = db.execute(params)
-                        .get();
-
-                if (result.matches("\\d+")) {
-                    super.addUserToLogged(result);
-
-                    Intent intent = new Intent(this, MainScreenActivity.class);
-                    startActivity(intent);
-                    finish();
-                } else {
-                    Toast.makeText(this, result, Toast.LENGTH_SHORT).show();
-                }
+                DatabaseConnection db = new DatabaseConnection(Login.this);
+                db.execute(params);
             }
         } else {
             Toast.makeText(this, "Brak sieci wifi", Toast.LENGTH_SHORT).show();

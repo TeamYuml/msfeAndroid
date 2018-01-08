@@ -4,7 +4,6 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.ImageView;
-import android.content.Intent;
 import android.widget.Toast;
 
 import com.example.konrad.start_app.R;
@@ -61,7 +60,7 @@ public class Main2Activity extends SameMethodsForLoginAndRegister {
         String pesel = pes.getText().toString().trim();
         String adres = adr.getText().toString().trim();
 
-        String params[] = {email, haslo,
+        String params[] = {"register", email, haslo,
                 imie, nazwisko, pesel, adres
         };
 
@@ -83,22 +82,9 @@ public class Main2Activity extends SameMethodsForLoginAndRegister {
                 // Walidacja emaila i numeru PESEL
                 if (super.checkValidemail(email) && peselValid(pesel) && super.validPassword(haslo)) {
                     // Inicjalizacja nowego watku zwiazanego z polaczeniem do bazy danych MySQL
-                    DatabaseConnection dc = new DatabaseConnection();
+                    DatabaseConnection dc = new DatabaseConnection(Main2Activity.this);
                     // Start nowego watku
-                    String result = dc.execute(params)
-                            .get();
-
-                    // Sprawdzenie czy wszystko sie udalo i dostalem id zarejestrowanego usera
-                    if (result.matches("\\d+")) {
-                        super.addUserToLogged(result);
-                        Intent intent = new Intent(this, Login.class);
-                        intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
-                        startActivity(intent);
-                        finish();
-                    } else {
-                        Toast.makeText(this, result, Toast.LENGTH_SHORT).show();
-                    }
-
+                    dc.execute(params);
                 }
             } else {
                 Toast.makeText(this, "Hasla sie nie zgadzaja", Toast.LENGTH_SHORT).show();
