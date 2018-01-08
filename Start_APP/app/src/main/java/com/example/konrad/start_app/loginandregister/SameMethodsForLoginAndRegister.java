@@ -39,25 +39,6 @@ public class SameMethodsForLoginAndRegister extends AppCompatActivity {
         return isLogged == 1 ? true : false;
     }
 
-    /**
-     * Dodaje uzytkownika do pliku sharedpreferences
-     * jako zalogowanego oraz dodaje do niego jego id
-     * @param result
-     */
-    protected void addUserToLogged(String result) {
-        // Tworze zmienna do edytowanie pliku z referencjami
-        SharedPreferences.Editor editor = sp.edit();
-
-        // preferencja do sprawdzania czy usera jest juz zarejestrowany
-        editor.putInt("isLogged", 1);
-
-        // preferencja do trzymania userID
-        editor.putInt("userID", Integer.parseInt(result));
-
-        // zatwierdzenie zmian
-        editor.commit();
-    }
-
     //metoda sprawdza czy email nie jest nullem jezeli jest zwraca false
     protected boolean checkValidemail(String email) {
         String emailPattern = "[a-zA-Z0-9._-]+@[a-z]+\\.+[a-z]+";

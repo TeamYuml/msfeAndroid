@@ -1,5 +1,7 @@
 package com.example.konrad.start_app.dbconections;
 
+import android.support.annotation.UiThread;
+
 import java.io.BufferedReader;
 import java.io.BufferedWriter;
 import java.io.IOException;
@@ -71,12 +73,9 @@ public class Utility {
         try {
             URL ur = new URL(url);
             huc = (HttpURLConnection)ur.openConnection();
-            if (huc.getResponseCode() == 200) {
-                huc = (HttpURLConnection)ur.openConnection();
-                huc.setRequestMethod("POST");
-                huc.setDoOutput(true);
-                huc.setDoInput(true);
-            }
+            huc.setRequestMethod("POST");
+            huc.setDoOutput(true);
+            huc.setDoInput(true);
         } catch (ProtocolException | MalformedURLException e) {
             return null;
         } catch (IOException e) {
