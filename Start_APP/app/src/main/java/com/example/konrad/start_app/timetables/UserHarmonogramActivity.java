@@ -19,9 +19,6 @@ import android.widget.Toast;
 import com.example.konrad.start_app.R;
 import com.example.konrad.start_app.room.RoomDB;
 import com.example.konrad.start_app.room.UserHarmonogramEntity;
-import com.example.konrad.start_app.timetables.AddEventActivity;
-import com.example.konrad.start_app.timetables.DateProperty;
-import com.example.konrad.start_app.timetables.Do_SOS;
 
 import java.sql.Date;
 import java.util.List;

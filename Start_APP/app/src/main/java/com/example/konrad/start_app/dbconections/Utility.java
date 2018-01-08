@@ -1,7 +1,5 @@
 package com.example.konrad.start_app.dbconections;
 
-import android.support.annotation.UiThread;
-
 import java.io.BufferedReader;
 import java.io.BufferedWriter;
 import java.io.IOException;

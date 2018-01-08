@@ -71,6 +71,8 @@ public class AddEventActivity extends AppCompatActivity{
             // pobranie godziny z spinnera
             int godzinaPodania = Integer.parseInt(spinner.getSelectedItem().toString());
 
+            int okres = Integer.parseInt(okresTrwania);
+
             // utworzenie obiektu entity
             UserHarmonogramEntity uhe = new UserHarmonogramEntity();
 
@@ -100,7 +102,7 @@ public class AddEventActivity extends AppCompatActivity{
 
             // dodanie do kalendarza odpowiedniej ilosci dni aby
             // otrzymac date konca eventu
-            c.add(Calendar.DATE, Integer.parseInt(okresTrwania) - 1);
+            c.add(Calendar.DATE, okres - 1);
 
             // setowanie koncowej daty
             uhe.setDataKoniec(new Date(c.getTimeInMillis()));
