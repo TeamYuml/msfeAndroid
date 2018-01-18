@@ -36,7 +36,7 @@ Wykroczenie to można popełnić tylko umyślnie, wymagane jest bowiem tutaj stw
     <!-- Dla Pielegniarek-->
 
     <string name="IDpacjent">Wpisz ID pacjenta</string>
-    <string name="do_kalendarza">Przejdź do kalendarza harmonogramu</string>
+    <string name="do_kalendarza">Cofnij</string>
     <string name="title_activity_do__sos">Do_SOS</string>
     <string name="title_activity_user_harmonogram">UserHarmonogramActivity</string>
 </resources>

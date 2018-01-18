@@ -85,6 +85,10 @@ public class Login extends SameMethodsForLoginAndRegister {
         startActivity(intent);
     }
 
+    /**
+     * Przejscia do activity z zasadami
+     * @param view
+     */
     public void goToRules(View view) {
         Intent intent = new Intent(this, For_Login.class);
 

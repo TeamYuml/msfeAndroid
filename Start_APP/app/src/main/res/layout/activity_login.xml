@@ -112,6 +112,7 @@
                 android:layout_height="wrap_content"
                 android:onClick="goToRules"
                 android:text="@string/pamietaj"
+                android:textColor="@color/colorPrimary"
                 android:textSize="20sp" />
             <CheckBox
                 android:id="@+id/check1"

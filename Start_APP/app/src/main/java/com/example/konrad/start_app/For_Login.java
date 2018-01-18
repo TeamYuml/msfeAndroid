@@ -12,13 +12,9 @@ public class For_Login extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_for__login);
-        Button ustawienia = (Button)findViewById(R.id.ustawienia);
-        ustawienia.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                //TODO
+    }
 
-            }
-        });
+    public void back(View view) {
+        finish();
     }
 }
