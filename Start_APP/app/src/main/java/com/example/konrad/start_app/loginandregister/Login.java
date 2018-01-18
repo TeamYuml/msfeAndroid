@@ -10,6 +10,7 @@ import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.Toast;
 
+import com.example.konrad.start_app.For_Login;
 import com.example.konrad.start_app.MainScreenActivity;
 import com.example.konrad.start_app.R;
 import com.example.konrad.start_app.dbconections.DatabaseConnection;
@@ -62,8 +63,6 @@ public class Login extends SameMethodsForLoginAndRegister {
             String email = emailedit.getText().toString().trim();
             String password = passwordedit.getText().toString().trim();
 
-            System.out.println(email);
-
             if (super.checkValidemail(email) && super.validPassword(password)) {
 
                 String params[] = {"login", email, password};
@@ -82,6 +81,12 @@ public class Login extends SameMethodsForLoginAndRegister {
      */
     public void goToRegister(View view) {
         Intent intent = new Intent(this, Main2Activity.class);
+
+        startActivity(intent);
+    }
+
+    public void goToRules(View view) {
+        Intent intent = new Intent(this, For_Login.class);
 
         startActivity(intent);
     }

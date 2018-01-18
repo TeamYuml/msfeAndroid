@@ -33,6 +33,9 @@
             android:name=".MainScreenActivity"
             android:parentActivityName=".loginandregister.Login"/>
         <activity
+            android:name=".For_Login"
+            android:parentActivityName=".loginandregister.Login"/>
+        <activity
             android:name=".timetables.Callendar"
             android:parentActivityName=".MainScreenActivity" />
         <activity
@@ -54,6 +57,8 @@
 
         <activity android:name=".Ustawienia"
             android:parentActivityName=".MainScreenActivity"/>
+
+        <receiver android:name=".notifications.AlarmReceiver" />
     </application>
 
 </manifest>
