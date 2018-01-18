@@ -53,11 +53,13 @@ public class Utility {
 
             br.close();
             is.close();
-            huc.disconnect();
 
             return result;
         } catch (IOException e) {
             return "Serwis czasowo niedostepny";
+        }
+        finally {
+            huc.disconnect();
         }
     }
 
