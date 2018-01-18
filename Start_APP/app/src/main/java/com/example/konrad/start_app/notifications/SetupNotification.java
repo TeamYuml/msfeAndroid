@@ -10,15 +10,13 @@ import android.support.v4.app.NotificationCompat;
 
 import com.example.konrad.start_app.R;
 import com.example.konrad.start_app.room.RoomDB;
-import com.example.konrad.start_app.room.UserHarmonogramEntity;
+
 
 import java.util.Calendar;
-import java.util.Random;
 
 /**
  * Created by Kaniak on 27.12.2017.
  */
-
 public class SetupNotification {
 
     Context ctx;
