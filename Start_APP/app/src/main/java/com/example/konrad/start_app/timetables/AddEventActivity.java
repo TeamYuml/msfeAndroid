@@ -11,6 +11,7 @@ import android.widget.Spinner;
 import android.widget.Toast;
 
 import com.example.konrad.start_app.R;
+import com.example.konrad.start_app.notifications.SetupNotification;
 import com.example.konrad.start_app.room.RoomDB;
 import com.example.konrad.start_app.room.UserHarmonogramEntity;
 
@@ -106,6 +107,19 @@ public class AddEventActivity extends AppCompatActivity{
 
             // setowanie koncowej daty
             uhe.setDataKoniec(new Date(c.getTimeInMillis()));
+
+            c.setTime(data);
+
+            SetupNotification sN = new SetupNotification.NotifBuilder(this)
+                    .content("Musisz pobrac: " + nazwaLeku + " o godzinie: " + godzinaPodania)
+                    .period(okres)
+                    .hour(godzinaPodania)
+                    .startDay(c.get(Calendar.DAY_OF_MONTH))
+                    .build();
+
+            int notifId = sN.scheduleNotification();
+
+            uhe.setLastNotifId(notifId);
 
             // dodanie eventu do bazy danych
             addEvent(RoomDB.getDB(this), uhe);
