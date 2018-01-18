@@ -25,4 +25,7 @@ public interface UserHarmonogramDAO {
     @Query("SELECT * FROM userharmonogram WHERE :data BETWEEN dataStart " +
             "AND dataKoniec ORDER BY godzinaPodania ASC, nazwaLeku ASC ")
     public List<UserHarmonogramEntity> loadEvents(Date data);
+
+    @Query("SELECT ostatnienotifId FROM userharmonogram ORDER BY ostatnienotifId DESC LIMIT 1")
+    public int takeLastNotifId();
 }

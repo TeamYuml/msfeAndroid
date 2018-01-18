@@ -10,7 +10,7 @@ import android.content.Context;
  * Klasa dla instancji bazy danych
  * Created by Kaniak on 11.12.2017.
  */
-@Database(entities = {UserHarmonogramEntity.class}, version = 2)
+@Database(entities = {UserHarmonogramEntity.class}, version = 3)
 @TypeConverters({Converters.class})
 public abstract class RoomDB extends RoomDatabase {
 
