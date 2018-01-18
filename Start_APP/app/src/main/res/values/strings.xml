@@ -1,7 +1,7 @@
 <resources>
     <!--do rejestracji-->
     <string name="app_name">Start_APP</string>
-    <string name="tap">Tap to next</string>
+    <string name="tap">Przejdz dalej</string>
     <string name="registration">Formularz rejestracyjny</string>
     <string name="login">Haslo</string>
     <string name="email">Email</string>
