@@ -1,11 +1,13 @@
 package com.example.konrad.start_app.loginandregister;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.Toast;
 
+import com.example.konrad.start_app.For_Login;
 import com.example.konrad.start_app.R;
 import com.example.konrad.start_app.dbconections.DatabaseConnection;
 
@@ -108,5 +110,16 @@ public class Main2Activity extends SameMethodsForLoginAndRegister {
             Toast.makeText(getApplicationContext(), "Zly pesel", Toast.LENGTH_SHORT).show();
             return false;
         }
+    }
+
+
+    /**
+     * Przejscia do activity z zasadami
+     * @param view
+     */
+    public void goToRules(View view) {
+        Intent intent = new Intent(this, For_Login.class);
+
+        startActivity(intent);
     }
 }

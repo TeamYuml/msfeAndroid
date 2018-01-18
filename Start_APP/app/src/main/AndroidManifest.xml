@@ -34,7 +34,7 @@
             android:parentActivityName=".loginandregister.Login"/>
         <activity
             android:name=".For_Login"
-            android:parentActivityName=".loginandregister.Login"/>
+            android:parentActivityName=".loginandregister.Main2Activity"/>
         <activity
             android:name=".timetables.Callendar"
             android:parentActivityName=".MainScreenActivity" />
