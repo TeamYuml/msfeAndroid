@@ -47,9 +47,9 @@ public class SelectHarmonogram extends AsyncTask<String, Void, String> {
 
         HttpURLConnection huc = utility.getConnection(url);
 
-        if (huc != null) {
+        if (huc.getRequestProperty("isConnected").compareTo("1")  == 0) {
             // Pobieranie harmonogramu z web service
-            return utility.getResultFromWebService(encodeForHarmonogramSelect(strings), huc);
+            return utility.getResultFromWebService(encodeForHarmonogramSelect(strings));
         } else {
             return "Serwis czasowo niedostepny";
         }

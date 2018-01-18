@@ -56,9 +56,9 @@ public class DatabaseConnection extends AsyncTask<String, Void, String>{
             HttpURLConnection huc = utility.getConnection(url);
 
             // jezeli huc jest nullem to znaczy że response z jest inny od 200
-            if (huc != null) {
+            if (huc.getRequestProperty("isConnected").compareTo("1")  == 0) {
                 // Pobranie wyniku z webservica z pod wskazenego adresu url
-                return utility.getResultFromWebService(encodeForRegister(strings), huc);
+                return utility.getResultFromWebService(encodeForRegister(strings));
             } else {
                 return "Serwis czasowo niedostepny";
             }
@@ -71,8 +71,8 @@ public class DatabaseConnection extends AsyncTask<String, Void, String>{
             HttpURLConnection huc = utility.getConnection(url);
 
             // jezeli huc jest nullem to znaczy że response z jest inny od 200
-            if (huc != null) {
-                return utility.getResultFromWebService(encodeForLogin(strings), huc);
+            if (huc.getRequestProperty("isConnected").compareTo("1")  == 0) {
+                return utility.getResultFromWebService(encodeForLogin(strings));
             } else {
                 return "Serwis czasowo niedostepny";
             }

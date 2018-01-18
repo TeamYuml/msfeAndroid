@@ -19,13 +19,14 @@ import java.net.URL;
 
 public class Utility {
 
+    HttpURLConnection huc;
+
     /**
      * Metoda realizujeca polaczenie z web servicem
      * @param encodedParameters zakodowane paremtry do requesta POST
-     * @param huc obiekt z polaczonym web servicem
      * @return String z wynikiem dzialania web servica
      */
-    public String getResultFromWebService(String encodedParameters, HttpURLConnection huc) {
+    public String getResultFromWebService(String encodedParameters) {
         try {
             OutputStream os = huc.getOutputStream();
             BufferedWriter bw = new BufferedWriter(new OutputStreamWriter(os, "UTF-8"));
@@ -69,7 +70,6 @@ public class Utility {
      * @return Obiekt HttpURLConnection lub null gdy brak polaczenia
      */
     public HttpURLConnection getConnection(String url) {
-        HttpURLConnection huc;
         try {
             URL ur = new URL(url);
             huc = (HttpURLConnection)ur.openConnection();
@@ -77,10 +77,13 @@ public class Utility {
             huc.setDoOutput(true);
             huc.setDoInput(true);
         } catch (ProtocolException | MalformedURLException e) {
-            return null;
+            huc.setRequestProperty("isConnected", "0");
+            return huc;
         } catch (IOException e) {
-            return null;
+            huc.setRequestProperty("isConnected", "0");
+            return huc;
         }
+        huc.setRequestProperty("isConnected", "1");
         return huc;
     }
 }
