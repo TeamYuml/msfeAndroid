@@ -1,11 +1,14 @@
 package com.example.konrad.start_app.loginandregister;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.CheckBox;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.Toast;
 
+import com.example.konrad.start_app.For_Login;
 import com.example.konrad.start_app.R;
 import com.example.konrad.start_app.dbconections.DatabaseConnection;
 
@@ -60,9 +63,13 @@ public class Main2Activity extends SameMethodsForLoginAndRegister {
         String pesel = pes.getText().toString().trim();
         String adres = adr.getText().toString().trim();
 
+        // parametry do przeslania dla polaczenia do DB
         String params[] = {"register", email, haslo,
                 imie, nazwisko, pesel, adres
         };
+
+        // checkbox do przeczytanych zasad
+        CheckBox checkbox = (CheckBox)findViewById(R.id.check1);
 
         // Zmienna sprawdzajaca czy wszystkie pola sa wypelnione
         boolean isFilled = true;
@@ -76,7 +83,8 @@ public class Main2Activity extends SameMethodsForLoginAndRegister {
         }
 
         // Sprawdzenie czy zmienna jest na true jezeli jest na false to znaczy ze ktores pole jest puste
-        if (isFilled) {
+        // oraz sprawdzam czy checkbox zostal zaznaczony
+        if (isFilled && checkbox.isChecked()) {
             // Sprawdzenie czy hasla sie zgadzaja
             if (haslo.compareTo(hasloConfirm) == 0) {
                 // Walidacja emaila i numeru PESEL
@@ -90,7 +98,7 @@ public class Main2Activity extends SameMethodsForLoginAndRegister {
                 Toast.makeText(this, "Hasla sie nie zgadzaja", Toast.LENGTH_SHORT).show();
             }
         } else {
-            Toast.makeText(this, "Wypelnij wszystkie pola", Toast.LENGTH_SHORT).show();
+            Toast.makeText(this, "Wypelnij wszystkie pola i przeczytaj zasady", Toast.LENGTH_SHORT).show();
         }
     }
 
@@ -108,5 +116,16 @@ public class Main2Activity extends SameMethodsForLoginAndRegister {
             Toast.makeText(getApplicationContext(), "Zly pesel", Toast.LENGTH_SHORT).show();
             return false;
         }
+    }
+
+
+    /**
+     * Przejscia do activity z zasadami
+     * @param view
+     */
+    public void goToRules(View view) {
+        Intent intent = new Intent(this, For_Login.class);
+
+        startActivity(intent);
     }
 }

@@ -62,8 +62,6 @@ public class Login extends SameMethodsForLoginAndRegister {
             String email = emailedit.getText().toString().trim();
             String password = passwordedit.getText().toString().trim();
 
-            System.out.println(email);
-
             if (super.checkValidemail(email) && super.validPassword(password)) {
 
                 String params[] = {"login", email, password};
