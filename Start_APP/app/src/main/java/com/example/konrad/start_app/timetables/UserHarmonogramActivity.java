@@ -142,7 +142,7 @@ public class UserHarmonogramActivity extends AppCompatActivity {
             }
             startActivity(callintent);
         } else {
-            Toast.makeText(this, "Wystapil blad. Prosze sprobowac ponownie.", Toast.LENGTH_SHORT).show();
+            Toast.makeText(this, "Brak zapisanego numeru do lekarza.", Toast.LENGTH_SHORT).show();
         }
     }
 }
