@@ -67,7 +67,8 @@ public class Utility {
     /**
      * Metoda do otwarcia polaczenia
      * @param url String z url do ktorego otwieram polaczenie
-     * @return Obiekt HttpURLConnection lub null gdy brak polaczenia
+     * @return Obiekt HttpURLConnection lub obiekt z property ktora mowi czy
+     * responsecode jest rozny 200 gdy brak polaczenia
      */
     public HttpURLConnection getConnection(String url) {
         try {
