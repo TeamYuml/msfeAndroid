@@ -10,7 +10,6 @@ import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.Toast;
 
-import com.example.konrad.start_app.For_Login;
 import com.example.konrad.start_app.MainScreenActivity;
 import com.example.konrad.start_app.R;
 import com.example.konrad.start_app.dbconections.DatabaseConnection;
