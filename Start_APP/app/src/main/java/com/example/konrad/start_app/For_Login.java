@@ -4,6 +4,9 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 
+/**
+ * Klasa dla zasad uzytkownia aplikacji
+ */
 public class For_Login extends AppCompatActivity {
 
     @Override
@@ -12,6 +15,10 @@ public class For_Login extends AppCompatActivity {
         setContentView(R.layout.activity_for__login);
     }
 
+    /**
+     * Obsluga przycisku cofnij ktora cofa do acitivy MainActivity2
+     * @param view
+     */
     public void back(View view) {
         finish();
     }
