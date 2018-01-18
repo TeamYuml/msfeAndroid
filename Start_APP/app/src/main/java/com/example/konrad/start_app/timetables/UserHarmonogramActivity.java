@@ -47,6 +47,8 @@ public class UserHarmonogramActivity extends AppCompatActivity {
 
         LinearLayout ll = (LinearLayout)findViewById(R.id.ll4);
 
+        float textSize = 24;
+
         // jezeli nie ma zadnego eventu w harmonogramie
         // pokazuje odpowiedni text jezeli sa wyswietlam eventy
         if (spisEventow.size() == 0) {
@@ -57,7 +59,7 @@ public class UserHarmonogramActivity extends AppCompatActivity {
         } else {
             for (UserHarmonogramEntity uhe : spisEventow) {
                 TextView tv = new TextView(this);
-                tv.setTextSize(24f);
+                tv.setTextSize(textSize);
                 tv.setPadding(0, 0, 0, 5);
                 tv.setText("Godzina podania: " + uhe.getGodzinaPodania() + "\n"
                         + "Nazwa leku: " + uhe.getNazwaLeku() + "\n");

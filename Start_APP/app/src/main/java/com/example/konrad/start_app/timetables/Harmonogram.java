@@ -42,9 +42,11 @@ public class Harmonogram extends AppCompatActivity {
 
         LinearLayout ll = (LinearLayout)findViewById(R.id.ll4);
 
+        float textSize = 20;
+
         for (int i = 0; i < obj.length; i++) {
             TextView tv = new TextView(this);
-            tv.setTextSize(20f);
+            tv.setTextSize(textSize);
             tv.setPadding(0, 0, 0, 5);
             tv.setText("Godzina podania: " + daneDoHarmonogramu[i][0] + "\n"
                     + "Nazwa leku: " + daneDoHarmonogramu[i][1] + "\n");
