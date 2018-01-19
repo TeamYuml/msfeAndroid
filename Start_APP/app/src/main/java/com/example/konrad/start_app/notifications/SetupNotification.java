@@ -62,6 +62,7 @@ public class SetupNotification {
 
         for (int i = 0; i < period; i++) {
             notifnum++;
+
             alarmManager = (AlarmManager) ctx.getSystemService(Context.ALARM_SERVICE);
             Intent intent = new Intent(ctx, AlarmReceiver.class);
             intent.putExtra(AlarmReceiver.NOTIFICATION, getNotification());
@@ -94,7 +95,8 @@ public class SetupNotification {
                 .setSmallIcon(R.drawable.grayscale_logo_on_transparent_282x69)
                 .setContentTitle("Pobranie leku")
                 .setContentText(content)
-                .setContentIntent(pendingIntent);
+                .setContentIntent(pendingIntent)
+                .setAutoCancel(true);
 
         return builder.build();
     }

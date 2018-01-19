@@ -18,6 +18,7 @@ import com.example.konrad.start_app.room.UserHarmonogramEntity;
 import java.sql.Date;
 import java.util.Calendar;
 
+
 /**
  * Activity dla dodania nowego eventu do harmonogramu
  * Created by Kaniak on 11.12.2017.
