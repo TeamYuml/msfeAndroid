@@ -17,17 +17,20 @@ public class UserHarmonogramEntity {
     @PrimaryKey(autoGenerate = true)
     public int id;
 
-    @ColumnInfo(name = "dataStart")
-    public Date dataStart;
-
     @ColumnInfo(name = "godzinaPodania")
     public int godzinaPodania;
 
     @ColumnInfo(name = "nazwaLeku")
     public String nazwaLeku;
 
+    @ColumnInfo(name = "dataStart")
+    public Date dataStart;
+
     @ColumnInfo(name = "dataKoniec")
     public Date dataKoniec;
+
+    @ColumnInfo(name = "ostatnienotifId")
+    public int lastNotifId;
 
     public int getId() {
         return id;
@@ -47,6 +50,8 @@ public class UserHarmonogramEntity {
         return nazwaLeku;
     }
 
+    public int getLastNotifId(){ return lastNotifId; }
+
     public void setId(int id) {
         this.id = id;
     }
@@ -64,4 +69,6 @@ public class UserHarmonogramEntity {
     public void setNazwaLeku(String nazwaLeku) {
         this.nazwaLeku = nazwaLeku;
     }
+
+    public void setLastNotifId(int lastNotifId) { this.lastNotifId = lastNotifId; }
 }

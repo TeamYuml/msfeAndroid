@@ -11,11 +11,13 @@ import android.widget.Spinner;
 import android.widget.Toast;
 
 import com.example.konrad.start_app.R;
+import com.example.konrad.start_app.notifications.SetupNotification;
 import com.example.konrad.start_app.room.RoomDB;
 import com.example.konrad.start_app.room.UserHarmonogramEntity;
 
 import java.sql.Date;
 import java.util.Calendar;
+
 
 /**
  * Activity dla dodania nowego eventu do harmonogramu
@@ -100,12 +102,29 @@ public class AddEventActivity extends AppCompatActivity{
             // ustawienie kalendarza na kliknieta date
             c.setTime(data);
 
+            // pierwszy dzien pobierania leku
+            int poczatkowyDzien = c.get(Calendar.DAY_OF_MONTH);
+
             // dodanie do kalendarza odpowiedniej ilosci dni aby
             // otrzymac date konca eventu
             c.add(Calendar.DATE, okres - 1);
 
             // setowanie koncowej daty
             uhe.setDataKoniec(new Date(c.getTimeInMillis()));
+
+            // zbudowanie powiadomienia
+            SetupNotification sN = new SetupNotification.NotifBuilder(this)
+                    .content("Musisz pobrac: " + nazwaLeku + " o godzinie: " + godzinaPodania)
+                    .period(okres)
+                    .hour(godzinaPodania)
+                    .startDay(poczatkowyDzien)
+                    .build();
+
+            // pobranie id powiadomienia
+            int notifId = sN.scheduleNotification();
+
+            // ustawienie id powiadomienia dla klasy entity
+            uhe.setLastNotifId(notifId);
 
             // dodanie eventu do bazy danych
             addEvent(RoomDB.getDB(this), uhe);

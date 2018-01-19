@@ -1,6 +1,9 @@
 package com.example.konrad.start_app.timetables;
 
 import android.Manifest;
+import android.app.AlarmManager;
+import android.app.NotificationManager;
+import android.app.PendingIntent;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
@@ -17,11 +20,13 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.konrad.start_app.R;
+import com.example.konrad.start_app.notifications.AlarmReceiver;
 import com.example.konrad.start_app.room.RoomDB;
 import com.example.konrad.start_app.room.UserHarmonogramEntity;
 
 import java.sql.Date;
 import java.util.List;
+import java.util.concurrent.TimeUnit;
 
 
 /**
@@ -71,6 +76,9 @@ public class UserHarmonogramActivity extends AppCompatActivity {
                 button.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View view) {
+
+                        cancelNotification(uhe);
+
                         deleteEvent(RoomDB.getDB(getBaseContext()), uhe);
                         // ponowne tworzenie view
                         recreate();
@@ -109,6 +117,41 @@ public class UserHarmonogramActivity extends AppCompatActivity {
         Intent intent = new Intent(this, AddEventActivity.class);
 
         startActivity(intent);
+    }
+
+    /**
+     * Zatrzymanie powiadomien gdy zdarzenie zostanie usuniete
+     * @param uhe - zdarzenie do zatrzymania powiadomien
+     */
+    public void cancelNotification(UserHarmonogramEntity uhe) {
+        int notifnum = uhe.getLastNotifId();
+
+        Date dataStart = uhe.getDataStart();
+
+        Date dataKoniec = uhe.getDataKoniec();
+
+        long roznicaDat = dataKoniec.getTime() - dataStart.getTime();
+
+        long iloscDniPobieraniaLeku = TimeUnit.DAYS.convert(roznicaDat, TimeUnit.MILLISECONDS) + 1;
+
+        NotificationManager manager = (NotificationManager)getSystemService(Context.NOTIFICATION_SERVICE);
+
+        for(int i = 0; i < iloscDniPobieraniaLeku; i++) {
+            Intent intent = new Intent(this, AlarmReceiver.class);
+            intent.putExtra(AlarmReceiver.ID,notifnum);
+
+            PendingIntent pendingIntent = PendingIntent.getBroadcast(this,
+
+                    notifnum, intent, PendingIntent.FLAG_UPDATE_CURRENT);
+
+            AlarmManager am = (AlarmManager)getSystemService(ALARM_SERVICE);
+
+            am.cancel(pendingIntent);
+
+            pendingIntent.cancel();
+            manager.cancel(notifnum);
+            notifnum--;
+        }
     }
 
     /**
