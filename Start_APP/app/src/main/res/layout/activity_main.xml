@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="com.example.konrad.start_app.MainActivity"
+    android:background="@color/start_app2"
+    android:id="@+id/entireView"
+
+    >
+
+    <LinearLayout
+        android:id="@+id/glowny_lay"
+        android:layout_width="368dp"
+        android:layout_height="495dp"
+        android:gravity="center"
+        android:orientation="vertical"
+        tools:layout_editor_absoluteX="8dp"
+        tools:layout_editor_absoluteY="8dp"
+        tools:ignore="UseCompoundDrawables"
+
+
+
+        >
+
+        <ImageView
+            android:id="@+id/imageview1"
+            android:layout_width="match_parent"
+            android:layout_height="100dp"
+            android:gravity="center"
+            tools:layout_editor_absoluteX="8dp"
+            tools:layout_editor_absoluteY="8dp"
+            android:src="@drawable/primary_logo_on_transparent_282x69"
+            android:contentDescription="@string/welcome"
+            />
+
+        <TextView
+            android:id="@+id/textview1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:fontFamily="serif"
+
+            android:text="@string/tap"
+            android:textAlignment="center"
+            android:textAppearance="@style/TextAppearance.AppCompat"
+            android:textSize="50sp" />
+    </LinearLayout>
+
+
+</android.support.constraint.ConstraintLayout>

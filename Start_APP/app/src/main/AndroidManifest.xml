@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    package="com.example.konrad.start_app">
+
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.CALL_PHONE" />
+
+    <application
+        android:allowBackup="true"
+        android:icon="@mipmap/ic_launcher"
+        android:label="@string/app_name"
+        android:roundIcon="@mipmap/ic_launcher_round"
+        android:supportsRtl="true"
+        android:theme="@style/AppTheme">
+        <activity
+            android:name=".MainActivity"
+            android:configChanges="orientation|screenSize">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name=".loginandregister.Login"
+            android:parentActivityName=".MainActivity" />
+        <activity
+            android:name=".loginandregister.Main2Activity"
+            android:parentActivityName=".loginandregister.Login" />
+        <activity
+            android:name=".MainScreenActivity"
+            android:parentActivityName=".loginandregister.Login"/>
+        <activity
+            android:name=".For_Login"
+            android:parentActivityName=".loginandregister.Main2Activity"/>
+        <activity
+            android:name=".timetables.Callendar"
+            android:parentActivityName=".MainScreenActivity" />
+        <activity
+            android:name=".timetables.HarmonogramModel"
+            android:parentActivityName=".timetables.Callendar" />
+        <activity
+            android:name=".timetables.Harmonogram"
+            android:parentActivityName=".timetables.HarmonogramModel" />
+        <activity
+            android:name=".timetables.UserHarmonogramActivity"
+            android:label="@string/title_activity_user_harmonogram"
+            android:parentActivityName=".timetables.Callendar"/>
+
+        <activity android:name=".timetables.AddEventActivity"
+            android:parentActivityName=".timetables.UserHarmonogramActivity"/>
+
+        <activity android:name=".timetables.Do_SOS"
+            android:parentActivityName=".timetables.UserHarmonogramActivity"/>
+
+        <activity android:name=".Ustawienia"
+            android:parentActivityName=".MainScreenActivity"/>
+
+        <receiver android:name=".notifications.AlarmReceiver" />
+    </application>
+
+</manifest>
