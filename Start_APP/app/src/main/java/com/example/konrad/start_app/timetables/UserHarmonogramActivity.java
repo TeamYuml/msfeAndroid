@@ -4,7 +4,6 @@ import android.Manifest;
 import android.app.AlarmManager;
 import android.app.NotificationManager;
 import android.app.PendingIntent;
-import android.content.ComponentName;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
@@ -22,12 +21,10 @@ import android.widget.Toast;
 
 import com.example.konrad.start_app.R;
 import com.example.konrad.start_app.notifications.AlarmReceiver;
-import com.example.konrad.start_app.notifications.SetupNotification;
 import com.example.konrad.start_app.room.RoomDB;
 import com.example.konrad.start_app.room.UserHarmonogramEntity;
 
 import java.sql.Date;
-import java.util.Calendar;
 import java.util.List;
 import java.util.concurrent.TimeUnit;
 
