@@ -9,7 +9,10 @@
     <string name="name">Imie</string>
     <string name="forname">Nazwisko</string>
     <string name="pesel">Pesel</string>
-    <string name="adres">Adres</string>
+    <string name="miasto">Miasto</string>
+    <string name="ulica">Ulica</string>
+    <string name="nrm">Numer M</string>
+    <string name="telefon"></string>
     <string name="zakoncz">ZAKONCZ</string>
 
     <!--do logowania-->

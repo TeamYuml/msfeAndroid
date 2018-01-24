@@ -48,7 +48,7 @@ public class DatabaseConnection extends AsyncTask<String, Void, String>{
         String type = strings[0];
 
         if (type.compareTo("register") == 0) {
-            String url = "http://192.168.0.107/index.php/android/register";
+            String url = "http://192.168.1.139/projects/emce/index.php/android/register";
 
             Utility utility = new Utility();
 
@@ -63,7 +63,7 @@ public class DatabaseConnection extends AsyncTask<String, Void, String>{
                 return "Serwis czasowo niedostepny";
             }
         } else {
-            String url = "http://192.168.0.107/index.php/android/login";
+            String url = "http://192.168.1.139/projects/emce/index.php/android/login";
 
             Utility utility = new Utility();
 
@@ -118,7 +118,10 @@ public class DatabaseConnection extends AsyncTask<String, Void, String>{
         String imie = strings[3];
         String nazwisko = strings[4];
         String pesel = strings[5];
-        String adres = strings[6];
+        String miasto = strings[6];
+        String ulica = strings[7];
+        String nrm = strings[8];
+        String telefon = strings[9];
 
         // Kodawanie danych do wyslania przez http requesta
         String postData = null;
@@ -128,7 +131,10 @@ public class DatabaseConnection extends AsyncTask<String, Void, String>{
                     + URLEncoder.encode("imie", "UTF-8") + "=" + URLEncoder.encode(imie, "UTF-8") + "&"
                     + URLEncoder.encode("nazwisko", "UTF-8") + "=" + URLEncoder.encode(nazwisko, "UTF-8") + "&"
                     + URLEncoder.encode("pesel", "UTF-8") + "=" + URLEncoder.encode(pesel, "UTF-8") + "&"
-                    + URLEncoder.encode("adres", "UTF-8") + "=" + URLEncoder.encode(adres, "UTF-8");
+                    + URLEncoder.encode("miasto", "UTF-8") + "=" + URLEncoder.encode(miasto, "UTF-8") + "&"
+                    + URLEncoder.encode("ulica", "UTF-8") + "=" + URLEncoder.encode(ulica, "UTF-8") + "&"
+                    + URLEncoder.encode("nrm", "UTF-8") + "=" + URLEncoder.encode(nrm, "UTF-8") + "&"
+                    + URLEncoder.encode("telefon", "UTF-8") + "=" + URLEncoder.encode(telefon, "UTF-8");
         } catch (UnsupportedEncodingException e) {
             e.printStackTrace();
         }

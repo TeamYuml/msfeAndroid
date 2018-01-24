@@ -30,7 +30,7 @@ public class Main2Activity extends SameMethodsForLoginAndRegister {
         if (!super.checkIfUserIsLogged()) {
             setContentView(R.layout.activity_main2);
 
-            ImageView imageReg = (ImageView) findViewById(R.id.imageview1);
+            ImageView imageReg = (ImageView) findViewById(R.id.imageview2);
 
             imageReg.setImageResource(R.drawable.primary_logo_on_transparent_282x69);
         } else {
@@ -46,13 +46,16 @@ public class Main2Activity extends SameMethodsForLoginAndRegister {
      */
     public void register(View view) throws ExecutionException, InterruptedException {
         // Inicjalizacja odpowiednich EditTextow
-        EditText em = (EditText)findViewById(R.id.edit1);
-        EditText has = (EditText)findViewById(R.id.edit2);
-        EditText hasConf = (EditText)findViewById(R.id.edit3);
-        EditText im = (EditText)findViewById(R.id.edit4);
-        EditText naz = (EditText)findViewById(R.id.edit5);
-        EditText pes = (EditText)findViewById(R.id.edit6);
-        EditText adr = (EditText)findViewById(R.id.edit7);
+        EditText em = (EditText)findViewById(R.id.email);
+        EditText has = (EditText)findViewById(R.id.haslo);
+        EditText hasConf = (EditText)findViewById(R.id.confHaslo);
+        EditText im = (EditText)findViewById(R.id.imie);
+        EditText naz = (EditText)findViewById(R.id.nazwisko);
+        EditText pes = (EditText)findViewById(R.id.PESEL);
+        EditText mia = (EditText)findViewById(R.id.miasto);
+        EditText ul = (EditText)findViewById(R.id.ulica);
+        EditText nrDomu = (EditText)findViewById(R.id.numerDomu);
+        EditText tel = (EditText)findViewById(R.id.telefon);
 
         // Pobieranie wartosci z EditTextow
         String email = em.getText().toString().trim();
@@ -61,15 +64,18 @@ public class Main2Activity extends SameMethodsForLoginAndRegister {
         String imie = im.getText().toString().trim();
         String nazwisko = naz.getText().toString().trim();
         String pesel = pes.getText().toString().trim();
-        String adres = adr.getText().toString().trim();
+        String miasto = mia.getText().toString().trim();
+        String ulica = ul.getText().toString().trim();
+        String nrm = nrDomu.getText().toString().trim();
+        String telefon = tel.getText().toString().trim();
 
         // parametry do przeslania dla polaczenia do DB
         String params[] = {"register", email, haslo,
-                imie, nazwisko, pesel, adres
+                imie, nazwisko, pesel, miasto, ulica, nrm, telefon
         };
 
         // checkbox do przeczytanych zasad
-        CheckBox checkbox = (CheckBox)findViewById(R.id.check1);
+        CheckBox checkbox = (CheckBox)findViewById(R.id.check2);
 
         // Zmienna sprawdzajaca czy wszystkie pola sa wypelnione
         boolean isFilled = true;
