@@ -1,9 +1,18 @@
 package com.example.konrad.start_app.timetables;
 
+import android.Manifest;
+import android.content.Context;
+import android.content.Intent;
+import android.content.SharedPreferences;
+import android.content.pm.PackageManager;
+import android.net.Uri;
+import android.support.v4.app.ActivityCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.view.View;
 import android.widget.LinearLayout;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.example.konrad.start_app.R;
 import com.example.konrad.start_app.timetables.DateProperty;
@@ -53,6 +62,34 @@ public class Harmonogram extends AppCompatActivity {
             tv.setId(i);
             ll.addView(tv);
         }
+    }
+
+    public void makeCall(View view) {
+        SharedPreferences sp = getSharedPreferences("com.example.konrad.start_app.preference_file",
+                Context.MODE_PRIVATE);
+
+        // pobranie numeru telefonu do lekarza
+        String numerLpkZUstawien = sp.getString("numerLekarza", "Blad");
+
+        if (numerLpkZUstawien.compareTo("Blad") != 0) {
+            Intent callintent = new Intent(Intent.ACTION_CALL);
+            //z ustawien String
+            callintent.setData(Uri.parse("tel:"+numerLpkZUstawien));
+            if (ActivityCompat.checkSelfPermission(this, Manifest.permission.CALL_PHONE) != PackageManager.PERMISSION_GRANTED) {
+
+                return;
+            }
+            startActivity(callintent);
+        } else {
+            Toast.makeText(this, "Brak zapisanego numeru do lekarza.", Toast.LENGTH_SHORT).show();
+        }
+
+    }
+
+    public void doSOS2(View view) {
+        Intent intent = new Intent(this, Do_SOS.class);
+
+        startActivity(intent);
     }
 }
 
